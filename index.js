@@ -13,14 +13,11 @@ app.get('/', function(req,res){
     res.send(saludo)
 });
 
-// Ruta /heroes ➝ se envía todo el array y Express lo parsea para el browser como JSON :D
 app.get('/heroes', (req,res) => {
 	res.send(heroes);
 });
 
-// Ruta /heroes/n ➝ se envía el nombre y profesión del héroe solicitado
 app.get('heroes/detalle/:id', (req,res) => {
-	// Acá lo primero será encontrar al héroe que corresponda
     let heroe = heroes.find(heroe => heroe.id === req.params.id);
     if(heroe){
        res.send(`Hola, mi nombre es ${heroes.nombre} y soy ${heroes.profesion}`)
@@ -50,8 +47,6 @@ app.get('/creditos', (req,res) => {
   res.send(`esta increible pagina fue desarrollada por Gabo Luque y Gonzalo Godoy`)
 })
 
-
-// Ruta... ¿Pára qué sirve esto?
 app.get('*', (req, res) => {
 	res.status(404).send('404 not found. <br> ¡Houston, poseemos problemas!');
 });
